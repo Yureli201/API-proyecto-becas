@@ -17,17 +17,17 @@ usersDAOs.getAll = async () => {
     return users;
 }
 
-userDAOs.getRole = async (role) => {
+usersDAOs.getRole = async (role) => {
     const users = await User.find({role:role});
     return users;
 }
 
-userDAOs.update = async (email, user) => {
+usersDAOs.update = async (email, user) => {
     const userUpdate = await User.updateOne({email:email}, user);
     return userUpdate;
 }
 
-userDAOs.delete = async (email) => {
+usersDAOs.delete = async (email) => {
     const userDelete = await User.deleteOne({email:email});
     return userDelete;
 }
