@@ -4,8 +4,7 @@ const studentInfoSchema = new Schema(
   {
     matricula: {
       type: Number,
-      required: false,
-      unique:true
+      required: false
     },
     beca_activa: {
       type: Boolean,
@@ -59,4 +58,4 @@ const userSchema = new Schema(
   }
 );
 
-module.exports = model("User", userSchema);
+export default model("User", userSchema);
