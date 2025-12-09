@@ -3,7 +3,13 @@ import ticketsDAOs from "../daos/ticketsDaos.js";
 const ticketsControllers = {}
 
 ticketsControllers.insertOne = (req, res) => {
-    ticketsDAOs.insertOne(req.body)
+    // Seguridad adicional: asegurarse que el middleware de auth adjuntó `req.user`
+    if (!req.user) return res.status(401).json({ error: 'Token no válido o no proporcionado' });
+
+    // Asociar información del usuario que crea el ticket
+    const ticketData = { ...req.body, createdBy: req.user.id || req.user.email, createdAt: new Date() };
+
+    ticketsDAOs.insertOne(ticketData)
     .then((ticketInsert) => {
         res.status(201).json({ ticketInsert });
     })
