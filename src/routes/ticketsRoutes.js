@@ -9,5 +9,6 @@ router.post("/insert", authMiddleware, ticketsControllers.insertOne);
 router.get("/getOne/:ticket_code", ticketsControllers.getOne);
 router.get("/getMatricula/:matricula", ticketsControllers.getMatricula);
 router.get("/getAll", ticketsControllers.getAll);
+router.get("/getRedeemed/:date", ticketsControllers.getRedeemed);
 
 export default router;
